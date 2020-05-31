@@ -19,9 +19,9 @@ module.exports = {
             .first();
 
             if(restaurant.password === password){
-                return response.status(400).json( { error: "Senha correta" } )
+                return response.status(400).json( { message: "Senha correta" } )
             } else {
-                return response.json( { message: "Senha incorreta" } );
+                return response.json( { error: "Senha incorreta" } );
             }
         }
     }
