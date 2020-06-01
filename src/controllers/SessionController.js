@@ -2,7 +2,12 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(request, response){
-        const { email, password } = request.body;
+        const { emailUb } = request.body;
+        const { passwordUb } = request.body;
+
+        const { email } = JSON.parse(emailUb);
+        const { password } = JSON.parse(passwordUb);
+        
 
         const EmailAlreadyExists = await connection('restaurant')
         .where('email', email)
