@@ -10,7 +10,7 @@ module.exports = {
         .first();
 
         if(!EmailAlreadyExists){
-            return response.json( { message: "Email não cadastrado" } );
+            return response.status(200).json( { message: "Email não cadastrado" } );
 
         } else{
             const restaurant = await connection('restaurant')
@@ -19,7 +19,7 @@ module.exports = {
             .first();
 
             if(restaurant.password === password){
-                return response.status(400).json( { message: "Senha correta" } )
+                return response.status(200).json( { message: "Senha correta" } )
             } else {
                 return response.json( { error: "Senha incorreta" } );
             }
