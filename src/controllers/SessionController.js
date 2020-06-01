@@ -4,11 +4,8 @@ module.exports = {
     async create(request, response){
         const { email, password } = request.body;
 
-        const obj = JSON.parse( { email, password } );
-
-
         const EmailAlreadyExists = await connection('restaurant')
-        .where('email', obj.email)
+        .where('email', email)
         .select('email')
         .first();
 
@@ -17,7 +14,7 @@ module.exports = {
 
         } else{
             const restaurant = await connection('restaurant')
-            .where('email',  obj.email)
+            .where('email', email)
             .select('password')
             .first();
 
