@@ -12,7 +12,6 @@ module.exports = {
         const id = crypto.randomBytes(5).toString('HEX');
         const data = { id, name, password, email, telephone, street, number, city, uf, cnpj, category, tipoUsuario};
 
-        
         try{
             await connection('restaurant').insert(data);
             return response.status(200).json({

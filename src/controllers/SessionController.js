@@ -14,11 +14,11 @@ module.exports = {
         } else{
             const restaurant = await connection('restaurant')
             .where('email', email)
-            .select('password')
+            .select('*')
             .first();
 
             if(restaurant.password === password){
-                return response.status(200).json( { message: "Senha correta" } )
+                return response.status(200).json( restaurant )
             } else {
                 return response.status(401).json( { error: "Senha incorreta" } );
             }
