@@ -8,9 +8,9 @@ module.exports = {
     },
 
     async create(request, response){
-        const { name, password, email, telephone, street, number, city, uf, cnpj, category} = request.body;
+        const { name, password, email, telephone, street, number, city, uf, cnpj, category, tipoUsuario} = request.body;
         const id = crypto.randomBytes(5).toString('HEX');
-        const data = { id, name, password, email, telephone, street, number, city, uf, cnpj, category};
+        const data = { id, name, password, email, telephone, street, number, city, uf, cnpj, category, tipoUsuario};
 
         
         try{

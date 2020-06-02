@@ -10,8 +10,9 @@ exports.up = function(knex) {
         table.string('number').notNullable();
         table.string('city').notNullable();
         table.string('uf', 2).notNullable();
-        table.string('cnpj').notNullable();
-        table.string('category').notNullable();
+        table.string('cnpj');
+        table.string('category');
+        table.string('tipoUsuario');
     });
 };
 
