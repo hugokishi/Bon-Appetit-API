@@ -8,26 +8,19 @@ module.exports = {
     },
 
     async create(request, response){
-        const { name, password, email, telephone, street, number, city, uf, cnpj, category } = request.body;
+        const { name, password, email, telephone, street, number, city, uf, cnpj, category} = request.body;
         const id = crypto.randomBytes(5).toString('HEX');
+        const data = { id, name, password, email, telephone, street, number, city, uf, cnpj, category};
+
         
         try{
-            await connection('restaurant').insert({
-                id,
-                name,
-                email,
-                password,
-                telephone,
-                street,
-                number,
-                city,
-                uf,
-                cnpj,
-                category
+            await connection('restaurant').insert(data);
+            return response.status(200).json({
+                id: id,
+                ... data
             });
-            return response.json( { message: "Restaurante cadastrado com sucesso!" } );
         } catch (err){
-            return response.json( { error: "Email já cadastrado" } );
+            return response.status(401).json( { error: "Email já cadastrado" } );
         }
     }
 };
